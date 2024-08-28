@@ -1,8 +1,12 @@
+import './assets/css/layout.css';
+import AddForm from './components/form';
+
 const App = ()=>{
   return (
     <>
-      <h1 className="text-5xl text-green-600">Helloo World</h1>
-      <h1 className="text-5xl text-green-600">Mohammadreza</h1>
+      <div className="my-bg">
+        <AddForm/>
+      </div>
     </>
   );
 }
