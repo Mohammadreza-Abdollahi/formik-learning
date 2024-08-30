@@ -1,5 +1,5 @@
 import './assets/css/layout.css';
-import AddForm from './components/form';
+import AddForm from './components/Form';
 
 const App = ()=>{
   return (

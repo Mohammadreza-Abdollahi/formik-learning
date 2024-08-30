@@ -2,7 +2,8 @@ import * as Yup from 'yup'
 export const initialValues = {
     name: '',
     email: '',
-    password: ''
+    password: '',
+    bio: ''
 };
 export const onSubmit = (values)=>{
     console.log(values);
