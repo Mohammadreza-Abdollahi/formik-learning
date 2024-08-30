@@ -3,7 +3,11 @@ export const initialValues = {
     name: '',
     email: '',
     password: '',
-    bio: ''
+    address: {
+        city: '',
+        postcode: ''
+    },
+    phone: ['','']
 };
 export const onSubmit = (values)=>{
     console.log(values);
@@ -24,7 +28,7 @@ export const validate = (values)=>{
     return error;
 }
 export const validationSchema = Yup.object({
-    name: Yup.string('نام باید هاوی یک رشته باشد!')
+    name: Yup.string()
              .required('نام نمیتواند خالی باشد!')
              .min(5,'نام باید حداقل هادی 5 کاراکتر باشد!')
              .max(15,'نام حداکثر میتواند هاوی 15 کاراکتر باشد!'),
@@ -36,5 +40,12 @@ export const validationSchema = Yup.object({
                  .min(8,'رمزعبور باید حداقل هاوی 8 کاراکتر باشد!')
                  .matches(/^(?=.*[A-Z])/g,'رمزعبور باید ترکیبی از حروف کوچک و بزرگ باشد!')
                  .matches(/(?=.*[0-9])/g,'رمز عبور باید هاوی اعداد باشد!')
-                 .matches(/(?=.*[-_!@#$%^&*])/,'رمزعبور باید هاوی یک کاراکتر خاص باشد')
+                 .matches(/(?=.*[-_!@#$%^&*])/,'رمزعبور باید هاوی یک کاراکتر خاص باشد'),
+    address: Yup.object({
+        city: Yup.string()
+                 .required('شهر نمیتواند خالی باشد!'),
+        postcode: Yup.string()
+                     .required('کد پستی نمبتواند خالی باشد!')
+    }),
+    phone: Yup.array().of(Yup.string().required('تلفن همراه یا تلفن ثابت نمیتواند خالی باشد!'))
 })

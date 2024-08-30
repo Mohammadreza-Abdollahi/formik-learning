@@ -1,4 +1,4 @@
-import { ErrorMessage, FastField, Field, Form, Formik } from 'formik';
+import { ErrorMessage, FastField, Form, Formik } from 'formik';
 import { initialValues , onSubmit , validationSchema } from '../formik/FormikLounching';
 import '../assets/css/layout.css'
 import FormError from './FormError';
@@ -12,7 +12,7 @@ const AddForm = () => {
             onSubmit={onSubmit}
             validationSchema={validationSchema}
             >
-                <div className="my-form py-10 rounded-lg">
+                <div className="my-form py-8 rounded-lg">
                     <h1 className="text-3xl text-purple-600 text-center">ثبت نام</h1>
                     <Form className='px-12'>
                         <div className='mb-6'>
@@ -36,9 +36,37 @@ const AddForm = () => {
                             </FastField>
                             <ErrorMessage name='password' component={FormError}/>
                         </div>
-                        <div className='mb-6'>
-                            <label className='text-lg' htmlFor="bio">بیوگرافی (اختیاری) :</label>
-                            <FastField component='textarea' name='bio' id='bio' type="text" placeholder="بیوگرافی خود را وارد کنید..." className="mt-2 transition duration-200 block m-auto w-full rounded-md outline-none px-3 py-3 text-slate-800 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-purple-500 text-xl"/>
+                        <div className='flex flex-row gap-3'>
+                            <div className='mb-6 basis-1/2'>
+                                <label className='text-lg' htmlFor="city">شهر :</label>
+                                <FastField name='address.city'>
+                                    {props=><FormInput {...props} placeholder={"شهر خود را وارد کنید..."} type={'text'} id={'city'}/>}
+                                </FastField>
+                                <ErrorMessage name='address.city' component={FormError}/>
+                            </div>
+                            <div className='mb-6 basis-1/2'>
+                                <label className='text-lg' htmlFor="postcode">کدپستی :</label>
+                                <FastField name='address.postcode'>
+                                    {props=><FormInput {...props} placeholder={"کدپستی خود را وارد کنید..."} type={'number'} id={'postcode'}/>}
+                                </FastField>
+                                <ErrorMessage name='address.postcode' component={FormError}/>
+                            </div>
+                        </div>
+                        <div className='flex flex-row gap-3'>
+                            <div className='mb-6 basis-1/2'>
+                                <label className='text-lg' htmlFor="phone1">تلفن همراه :</label>
+                                <FastField name='phone[0]'>
+                                    {props=><FormInput {...props} placeholder={"تلفن همراه خود را وارد کنید..."} type={'number'} id={'phone1'}/>}
+                                </FastField>
+                                <ErrorMessage name='phone[0]' component={FormError}/>
+                            </div>
+                            <div className='mb-6 basis-1/2'>
+                                <label className='text-lg' htmlFor="phone2">تلفن ثابت :</label>
+                                <FastField name='phone[1]'>
+                                    {props=><FormInput {...props} placeholder={"تلفن ثابت خود را وارد کنید..."} type={'number'} id={'phone2'}/>}
+                                </FastField>
+                                <ErrorMessage name='phone[1]' component={FormError}/>
+                            </div>
                         </div>
                         <input className='w-full py-3 mt-4 mb-3 border rounded border-purple-500 text-slate-700 transition-colors duration-300 hover:bg-purple-500 hover:text-white text-2xl outline-none' type="submit" value={'ثبت نام'}/>
                     </Form>
