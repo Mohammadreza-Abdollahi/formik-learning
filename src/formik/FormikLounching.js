@@ -7,10 +7,10 @@ export const initialValues = {
         city: '',
         postcode: ''
     },
-    phone: ['','']
+    phone: ['',''],
 };
-export const onSubmit = (values)=>{
-    console.log(values);
+export const onSubmit = (values , submitProps)=>{
+    console.log(submitProps);
 };
 export const validate = (values)=>{
     let error = {}
