@@ -3,19 +3,34 @@ import { initialValues , onSubmit , validationSchema } from '../formik/FormikLou
 import '../assets/css/layout.css'
 import FormError from './FormError';
 import FormInput from './FormInput';
+import loadingImg from '../assets/img/load.gif'
+import { useEffect, useState } from 'react';
 
 const AddForm = () => {
+    const [localData , setLocalData] = useState(null);
+    const [myValues , setMyValues] = useState(null);
+
+    const handleSaveLocal = (values)=>{
+        localStorage.setItem('formData' , JSON.stringify(values));
+    }
+    const handleGetSaveData = (dirty)=>{
+        setMyValues(localData);
+        dirty = true;
+    }
+    useEffect(()=>{
+        let savedData = localStorage.getItem('formData');
+        setLocalData(JSON.parse(savedData));
+    },[])
     return ( 
         <>
             <Formik
-            initialValues={initialValues}
+            initialValues={myValues || initialValues}
             onSubmit={onSubmit}
             validationSchema={validationSchema}
-            validateOnMount
+            enableReinitialize
             >
             {
                 Formik=>{
-                    console.log(Formik);
                     return(
                         <div className="my-form py-8 rounded-lg">
                             <h1 className="text-3xl text-purple-600 text-center">ثبت نام</h1>
@@ -73,15 +88,38 @@ const AddForm = () => {
                                         <ErrorMessage name='phone[1]' component={FormError}/>
                                     </div>
                                 </div>
-                                <button disabled={!Formik.isValid} type="submit" className='w-full py-3 mt-4 mb-3 border rounded border-purple-500 text-slate-700 transition-colors duration-300 hover:bg-purple-500 hover:text-white text-2xl outline-none hover:cursor-pointer disabled:hover:cursor-auto disabled:bg-purple-300 disabled:hover:text-slate-700 disabled:border-purple-300    '>
+                                <div className='flex flex-row gap-1'>
+                                    <button disabled={Formik.isSubmitting} type="submit" className='basis-auto w-full py-3 mt-4 mb-3 border rounded border-purple-500 text-slate-700 transition-colors duration-300 hover:bg-purple-500 hover:text-white text-2xl outline-none hover:cursor-pointer disabled:hover:cursor-auto disabled:bg-purple-300 disabled:hover:text-slate-700 disabled:border-purple-300    '>
+                                        {
+                                            Formik.isSubmitting ? (
+                                                <img className='w-1/2 m-auto' src={loadingImg} alt="" />
+                                            ) : (
+                                                "ثبت نام"
+                                            )
+                                        }
+                                    </button>
                                     {
-                                        Formik.isSubmitting ? (
-                                            'درحال ارسال...'
-                                        ) : (
-                                            "ثبت نام"
-                                        )
+                                        Formik.dirty && Formik.isValid ? (
+                                            <button type="button" onClick={()=>handleSaveLocal(Formik.values)} className='basis-auto w-full py-3 mt-4 mb-3 border rounded border-green-500 text-slate-700 transition-colors duration-300 hover:bg-green-500 hover:text-white text-2xl outline-none hover:cursor-pointer disabled:hover:cursor-auto disabled:bg-purple-300 disabled:hover:text-slate-700 disabled:border-purple-300    '>
+                                                ذخیره در حافظه
+                                            </button>
+                                        ) : null
                                     }
-                                </button>
+                                    {
+                                        localData ? (
+                                            <button type="button" onClick={()=>handleGetSaveData(Formik.dirty)} className='basis-auto w-full py-3 mt-4 mb-3 border rounded border-yellow-500 text-slate-700 transition-colors duration-300 hover:bg-yellow-500 hover:text-white text-2xl outline-none hover:cursor-pointer disabled:hover:cursor-auto disabled:bg-purple-300 disabled:hover:text-slate-700 disabled:border-purple-300    '>
+                                                جایگذاری اطلاعات ذخیره شده
+                                            </button>
+                                        ) : null
+                                    }
+                                    {
+                                        Formik.dirty ? (
+                                            <button type="button" onClick={()=>Formik.handleReset()} className='basis-auto w-full py-3 mt-4 mb-3 border rounded border-red-500 text-slate-700 transition-colors duration-300 hover:bg-red-500 hover:text-white text-2xl outline-none hover:cursor-pointer disabled:hover:cursor-auto disabled:bg-purple-300 disabled:hover:text-slate-700 disabled:border-purple-300    '>
+                                                پاکسازی
+                                            </button>
+                                        ) : null
+                                    }
+                                </div>
                             </Form>
                         </div>
                     )

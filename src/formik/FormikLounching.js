@@ -11,6 +11,7 @@ export const initialValues = {
 };
 export const onSubmit = (values , submitProps)=>{
     console.log(submitProps);
+    // submitProps.resetForm();
 };
 export const validate = (values)=>{
     let error = {}
