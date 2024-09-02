@@ -3,6 +3,7 @@ export const initialValues = {
     name: '',
     email: '',
     password: '',
+    bio: '',
     address: {
         city: '',
         postcode: ''
@@ -10,8 +11,10 @@ export const initialValues = {
     phone: ['',''],
 };
 export const onSubmit = (values , submitProps)=>{
-    console.log(submitProps);
-    // submitProps.resetForm();
+    setTimeout(()=>{
+        console.log(submitProps);
+        submitProps.resetForm();
+    },5000)
 };
 export const validate = (values)=>{
     let error = {}
