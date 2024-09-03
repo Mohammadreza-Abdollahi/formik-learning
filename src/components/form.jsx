@@ -14,7 +14,6 @@ const AddForm = () => {
     }
     const handleGetSaveData = (dirty)=>{
         setMyValues(localData);
-        dirty = true;
     }
 
     useEffect(()=>{
@@ -22,6 +21,15 @@ const AddForm = () => {
         setLocalData(JSON.parse(savedData));
     },[])
 
+    const education = [
+        {id:0 , value: 'انتخاب نشده'},
+        {id:1 , value: 'سیکل'},
+        {id:2 , value: 'دیپلم'},
+        {id:3 , value: 'فوق دیپلم'},
+        {id:4 , value: 'لیسانس'},
+        {id:5 , value: 'فوق لیسانس'},
+        {id:6 , value: 'دکتری'},
+    ]
     return ( 
         <>
             <Formik
@@ -39,20 +47,13 @@ const AddForm = () => {
                                 <FormikControler control={'input'} label={'نام :'} name={'name'} type={'text'} placeholder={"نام خود را وارد کنید..."}/>
                                 <FormikControler control={'input'} label={'ایمیل :'} name={'email'} type={'text'} placeholder={"ایمیل خود را وارد کنید..."}/>
                                 <FormikControler control={'input'} label={'رمزعبور :'} name={'password'} type={'password'} placeholder={"رمزعبور خود را وارد کنید..."}/>
+                                <FormikControler control={'select'} option={education} label={'تحصیلات :'} name={'education'} type={'select'} placeholder={"تحصیلات خود را وارد کنید..."}/>
                                 <div className='flex flex-row gap-3'>
                                     <div className='basis-1/2'>
                                         <FormikControler control={'input'} label={'شهر :'} name={'address.city'} type={'text'} placeholder={"شهر خود را وارد کنید..."}/>
                                     </div>
                                     <div className='basis-1/2'>
                                         <FormikControler control={'input'} label={'کدپستی :'} name={'address.postcode'} type={'number'} placeholder={"کدپستی خود را وارد کنید..."}/>
-                                    </div>
-                                </div>
-                                <div className='flex flex-row gap-3'>
-                                    <div className='basis-1/2'>
-                                        <FormikControler control={'input'} label={'تلفن همراه :'} name={'phone[0]'} type={'number'} placeholder={"تلفن همراه خود را وارد کنید!"}/>
-                                    </div>
-                                    <div className='basis-1/2'>
-                                        <FormikControler control={'input'} label={'تلفن ثابت :'} name={'phone[1]'} type={'number'} placeholder={"تلفن ثابت خود را وارد کنید!"}/>
                                     </div>
                                 </div>
                                 <div className='flex flex-row gap-1'>

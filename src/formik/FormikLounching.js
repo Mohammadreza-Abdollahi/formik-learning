@@ -7,7 +7,8 @@ export const initialValues = {
         city: '',
         postcode: ''
     },
-    phone: ['',''],
+    education: ''
+    // phone: ['',''],
 };
 export const onSubmit = (values , submitProps)=>{
     setTimeout(()=>{
@@ -50,5 +51,7 @@ export const validationSchema = Yup.object({
         postcode: Yup.string()
                      .required('کد پستی نمبتواند خالی باشد!')
     }),
-    phone: Yup.array().of(Yup.string().required('تلفن همراه یا تلفن ثابت نمیتواند خالی باشد!'))
+    phone: Yup.array().of(Yup.string().required('تلفن همراه یا تلفن ثابت نمیتواند خالی باشد!')),
+    education: Yup.string()
+                  .required('تحصیلات نمیتواند خالی باشد!')
 })

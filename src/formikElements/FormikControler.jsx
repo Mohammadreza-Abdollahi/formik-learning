@@ -1,4 +1,5 @@
 import FormInput from './FormInput'
+import FormSelect from './FormSelect';
 import FormTextarea from "./FormTextarea";
 
 const FormikControler = (props) => {
@@ -10,6 +11,10 @@ const FormikControler = (props) => {
         case 'textarea': 
             return(
                 <FormTextarea {...props}/>
+            )
+        case 'select': 
+            return(
+                <FormSelect {...props}/>
             )
         default:
             return
