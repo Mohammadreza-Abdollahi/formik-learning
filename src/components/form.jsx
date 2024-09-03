@@ -16,10 +16,12 @@ const AddForm = () => {
         setMyValues(localData);
         dirty = true;
     }
+
     useEffect(()=>{
         let savedData = localStorage.getItem('formData');
         setLocalData(JSON.parse(savedData));
     },[])
+
     return ( 
         <>
             <Formik
@@ -37,7 +39,6 @@ const AddForm = () => {
                                 <FormikControler control={'input'} label={'نام :'} name={'name'} type={'text'} placeholder={"نام خود را وارد کنید..."}/>
                                 <FormikControler control={'input'} label={'ایمیل :'} name={'email'} type={'text'} placeholder={"ایمیل خود را وارد کنید..."}/>
                                 <FormikControler control={'input'} label={'رمزعبور :'} name={'password'} type={'password'} placeholder={"رمزعبور خود را وارد کنید..."}/>
-                                <FormikControler control={'textarea'} label={'بیوگرافی(اختیاری) :'} name={'bio'} type={'bio'} placeholder={"بیوگرافی خود را وارد کنید..."}/>
                                 <div className='flex flex-row gap-3'>
                                     <div className='basis-1/2'>
                                         <FormikControler control={'input'} label={'شهر :'} name={'address.city'} type={'text'} placeholder={"شهر خود را وارد کنید..."}/>

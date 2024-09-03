@@ -3,8 +3,7 @@ export const initialValues = {
     name: '',
     email: '',
     password: '',
-    bio: '',
-    address: {
+        address: {
         city: '',
         postcode: ''
     },
