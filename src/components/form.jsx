@@ -30,12 +30,12 @@ const AddForm = () => {
         {id:5 , value: 'فوق لیسانس'},
         {id:6 , value: 'دکتری'},
     ]
-    const skils = [
-        {id:0 , value: 'HTML'},
-        {id:1 , value: 'JS'},
-        {id:2 , value: 'ReactJs'},
-        {id:3 , value: 'Kotlin'},
-        {id:4 , value: 'Ruby'},
+    const skills = [
+        {id:0 , pValue: 'پایتون' , eValue: 'Phyton'},
+        {id:1 , pValue: 'جاوااسکریپت' , eValue: 'JS'},
+        {id:2 , pValue: 'ریکت' , eValue: 'React'},
+        {id:3 , pValue: 'کاتلین' , eValue: 'Kotlin'},
+        {id:4 , pValue: 'روبی' , eValue: 'Ruby'},
     ]
     const gender = [
         {id: 1, value: 'اقا'},
@@ -51,6 +51,7 @@ const AddForm = () => {
             >
             {
                 Formik=>{
+                    console.log(Formik);
                     return(
                         <div className="my-form py-8 rounded-lg">
                             <h1 className="text-3xl text-purple-600 text-center">ثبت نام</h1>
@@ -60,7 +61,7 @@ const AddForm = () => {
                                 <FormikControler control={'input'} label={'رمزعبور :'} name={'password'} type={'password'} placeholder={"رمزعبور خود را وارد کنید..."}/>
                                 <FormikControler control={'select'} option={education} label={'تحصیلات :'} name={'education'} type={'select'} placeholder={"تحصیلات خود را وارد کنید..."}/>
                                 <FormikControler control={'radio'} option={gender} label={'جنسیت  :'} name={'gender'}/>
-                                {/* <FormikControler control={'checkbox'} option={skils} label={'مهارت ها :'} name={'skils'} type={'checkbox'}/> */}
+                                <FormikControler control={'checkbox'} option={skills} label={'مهارت ها :'} name={'skills'} type={'checkbox'}/>
                                 <div className='flex flex-row gap-3'>
                                     <div className='basis-1/2'>
                                         <FormikControler control={'input'} label={'شهر :'} name={'address.city'} type={'text'} placeholder={"شهر خود را وارد کنید..."}/>

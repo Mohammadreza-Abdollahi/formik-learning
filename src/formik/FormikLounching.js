@@ -9,6 +9,7 @@ export const initialValues = {
     },
     education: '',
     gender: 1,
+    skills: []
     // phone: ['',''],
 };
 export const onSubmit = (values , submitProps)=>{
@@ -54,5 +55,8 @@ export const validationSchema = Yup.object({
     }),
     phone: Yup.array().of(Yup.string().required('تلفن همراه یا تلفن ثابت نمیتواند خالی باشد!')),
     education: Yup.string()
-                  .required('تحصیلات نمیتواند خالی باشد!')
+                  .required('تحصیلات نمیتواند خالی باشد!'),
+    gender: Yup.string()
+               .required('جنسیت نمیتواند خالی باشد!'),
+    skills: Yup.array().min(1,'باید حداقل یک مهارت داشته باشید!')
 })
