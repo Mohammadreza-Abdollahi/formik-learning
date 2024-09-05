@@ -8,7 +8,7 @@ export const initialValues = {
         postcode: ''
     },
     education: '',
-    gender: 1
+    gender: 1,
     // phone: ['',''],
 };
 export const onSubmit = (values , submitProps)=>{

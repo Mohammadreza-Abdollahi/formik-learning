@@ -59,8 +59,8 @@ const AddForm = () => {
                                 <FormikControler control={'input'} label={'ایمیل :'} name={'email'} type={'text'} placeholder={"ایمیل خود را وارد کنید..."}/>
                                 <FormikControler control={'input'} label={'رمزعبور :'} name={'password'} type={'password'} placeholder={"رمزعبور خود را وارد کنید..."}/>
                                 <FormikControler control={'select'} option={education} label={'تحصیلات :'} name={'education'} type={'select'} placeholder={"تحصیلات خود را وارد کنید..."}/>
-                                <FormikControler control={'radio'} option={gender} label={'جنسیت  :'} name={'gender'} type={'radio'}/>
-                                <FormikControler control={'checkbox'} option={skils} label={'مهارت ها :'} name={'skils'} type={'checkbox'}/>
+                                <FormikControler control={'radio'} option={gender} label={'جنسیت  :'} name={'gender'}/>
+                                {/* <FormikControler control={'checkbox'} option={skils} label={'مهارت ها :'} name={'skils'} type={'checkbox'}/> */}
                                 <div className='flex flex-row gap-3'>
                                     <div className='basis-1/2'>
                                         <FormikControler control={'input'} label={'شهر :'} name={'address.city'} type={'text'} placeholder={"شهر خود را وارد کنید..."}/>
